@@ -30,7 +30,7 @@ jobs:
       - name: Running action   
         run: |        
           oras login ghcr.io -u srahul3 -p ${{ secrets.GITHUB_TOKEN }}
-          oras push ghcr.io/srahul3/oras_artifact:1.0.0,v1 \
+          oras push ghcr.io/srahul3/oras_artifact:1.0.0 \
           --manifest-config /dev/null:application/vnd.actions.packages \
           ./:application/vnd.actions.packages.layer.v1+tar
       
