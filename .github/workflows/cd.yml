@@ -17,5 +17,7 @@ jobs:
         mv oras-install/oras /usr/local/bin
         rm -rf oras_0.12.0_*.tar.gz oras-install
         oras login ghcr.io -u srahul3 -p ${{ secrets.GITHUB_TOKEN }}
-        oras push ghcr.io/srahul3/oras_artifact:1.0.0 --manifest-config /dev/null:application/vnd.actions.packages ./:application/vnd.actions.packages.layer.v1+tar
+        oras push ghcr.io/srahul3/oras_artifact:1.0.0 \
+        --manifest-config /dev/null:application/vnd.actions.packages \
+        ./:application/vnd.actions.packages.layer.v1+tar
       
