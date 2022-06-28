@@ -1,4 +1,4 @@
-name: 'package-action'
+name: 'package-action cli'
 on: # rebuild any PRs and main branch changes
   pull_request:
 #   push:
