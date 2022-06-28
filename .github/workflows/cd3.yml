@@ -33,4 +33,7 @@ jobs:
           oras push ghcr.io/srahul3/oras_artifact:1.0.0 \
           --manifest-config /dev/null:application/vnd.actions.packages \
           ./:application/vnd.actions.packages.layer.v1+tar
+          oras push ghcr.io/srahul3/oras_artifact:v1 \
+          --manifest-config /dev/null:application/vnd.actions.packages \
+          ./:application/vnd.actions.packages.layer.v1+tar
       
