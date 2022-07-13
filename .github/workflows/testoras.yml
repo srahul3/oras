@@ -1,10 +1,13 @@
-name: 'test-oras'
+name: 'test-oras-inatallation'
 on: # rebuild any PRs and main branch changes  
   workflow_dispatch:  
 
 jobs:
   test: # make sure the action works on a clean machine without building
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+        matrix:
+            os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
       
       - name: Install Oras
