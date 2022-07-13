@@ -1,4 +1,4 @@
-name: 'package-action cli'
+name: 'test-oras'
 on: # rebuild any PRs and main branch changes  
   workflow_dispatch:  
 
