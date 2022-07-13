@@ -1,0 +1,14 @@
+name: 'package-action cli'
+on: # rebuild any PRs and main branch changes  
+  workflow_dispatch:  
+
+jobs:
+  test: # make sure the action works on a clean machine without building
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Install Oras
+        run: |
+          oras
+
+      
