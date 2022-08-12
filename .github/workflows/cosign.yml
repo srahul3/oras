@@ -42,12 +42,17 @@ jobs:
           ./:application/vnd.actions.packages.layer.v1+tar
           
       - uses: sigstore/cosign-installer@main
-
-      - name: Sign the images
-        run: |
-          cosign sign ghcr.io/srahul3/oras:1.0.0 --yes
+      
+      - name: Sign image
         env:
-          COSIGN_EXPERIMENTAL: 1
+          COSIGN_EXPERIMENTAL: "true"
+          COSIGN_REPOSITORY: "ghcr.io/${{ github.repository_owner }}/signatures"
+        run: |          
+          cosign sign \
+          -a "repo=${{ github.repository }}" \
+          -a "workflow=${{ github.workflow }}" \
+          -a "ref=${{ github.sha }}" \
+          ghcr.io/${{ github.repository_owner }}/oras:1.0.0
 
       - name: Verify the pushed tags
         run: cosign verify ghcr.io/srahul3/oras:1.0.0
