@@ -16,7 +16,7 @@ jobs:
       id-token: write    
     steps:
       - name: Checking out!
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         # with:
         #   ref: 'Give optional branch name/SHA/tag to checkout' 
   
