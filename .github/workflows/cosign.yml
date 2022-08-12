@@ -45,9 +45,7 @@ jobs:
 
       - name: Sign the images
         run: |
-          cosign sign \
-            -y \
-            ghcr.io/srahul3/oras:1.0.0
+          cosign sign ghcr.io/srahul3/oras:1.0.0 --yes
         env:
           COSIGN_EXPERIMENTAL: 1
 
