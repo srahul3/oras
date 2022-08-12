@@ -32,3 +32,15 @@ jobs:
         with:
           package-name: 'oras-test'
         id: publish-action
+        
+      - name: Sign the images
+        run: |
+          cosign sign \
+            ghcr.io/srahul3/oras_test:1.0.0
+        env:
+          COSIGN_EXPERIMENTAL: 1
+
+      - name: Verify the pushed tags
+        run: cosign verify ghcr.io/srahul3/oras_test:1.0.0
+        env:
+          COSIGN_EXPERIMENTAL: 1
