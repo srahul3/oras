@@ -37,22 +37,20 @@ jobs:
       - name: Running action   
         run: |        
           oras login ghcr.io -u srahul3 -p ${{ secrets.GITHUB_TOKEN }}
-          oras push ghcr.io/srahul3/oras_artifact:1.0.0 \
+          oras push ghcr.io/srahul3/oras:1.0.0 \
           --manifest-config /dev/null:application/vnd.actions.packages \
           ./:application/vnd.actions.packages.layer.v1+tar
-          oras push ghcr.io/srahul3/oras_artifact:v1 \
-          --manifest-config /dev/null:application/vnd.actions.packages \
-          ./:application/vnd.actions.packages.layer.v1+tar
+          
       - uses: sigstore/cosign-installer@main
 
       - name: Sign the images
         run: |
           cosign sign \
-            ghcr.io/srahul3/oras_artifact:1.0.0
+            ghcr.io/srahul3/oras:1.0.0
         env:
           COSIGN_EXPERIMENTAL: 1
 
       - name: Verify the pushed tags
-        run: cosign verify ghcr.io/srahul3/oras_artifact:1.0.0
+        run: cosign verify ghcr.io/srahul3/oras:1.0.0
         env:
           COSIGN_EXPERIMENTAL: 1
