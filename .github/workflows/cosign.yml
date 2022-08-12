@@ -15,11 +15,15 @@ jobs:
       packages: write
       id-token: write    
     steps:
-      - name: Checking out!
-        uses: actions/checkout@v2
+      # - name: Checking out!
+      #  uses: actions/checkout@v2
         # with:
         #   ref: 'Give optional branch name/SHA/tag to checkout' 
   
+      - name: Create a file since checkout has issue with sigstore/cosign-installer@main
+        run: |
+          touch README.md
+          
       # The ORAS cli, possibly will be baked in runner-vm and this step will not be required
       - name: Install Oras
         run: |
