@@ -11,6 +11,9 @@ on: # rebuild any PRs and main branch changes
 jobs:
   test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      id-token: write  
     steps:
       - name: Checking out!
         uses: actions/checkout@v3
@@ -32,6 +35,8 @@ jobs:
         with:
           package-name: 'oras-test'
         id: publish-action
+        
+      - uses: sigstore/cosign-installer@main
         
       - name: Sign the images
         run: |
