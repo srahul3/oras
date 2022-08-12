@@ -1,4 +1,4 @@
-name: 'package-action cli 2'
+name: 'cosign keyless sig'
 on: # rebuild any PRs and main branch changes
   pull_request:
 #   push:
