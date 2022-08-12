@@ -15,8 +15,8 @@ jobs:
       packages: write
       id-token: write  
     steps:
-      - name: Checking out!
-        uses: actions/checkout@v3
+      # - name: Checking out!
+      #  uses: actions/checkout@v3
         # with:
         #   ref: 'Give optional branch name/SHA/tag to checkout' 
   
@@ -29,6 +29,10 @@ jobs:
           mv oras-install/oras /usr/local/bin/
           rm -rf oras_0.12.0_*.tar.gz oras-install/
           echo "Oras installed!"
+      
+      - name: Create a file
+        run: |
+          touch README.md
           
       - name: Running action   
         uses: ruchika-jain/package-action@1.0.1
